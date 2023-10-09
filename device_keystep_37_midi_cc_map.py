@@ -28,6 +28,10 @@ BUTTON_RECORD = 0x32
 BUTTON_STOP = 0x33
 BUTTON_PLAY = 0x36
 
+def OnMidiMsg(event):
+    pass
+    # event_print(event)
+
 def OnControlChange(event):
     event.handled = False
     if event.data1 == BUTTON_RECORD:
@@ -46,20 +50,19 @@ def OnControlChange(event):
         # Mod Strip and Knobs
         event.status -= event.midiChan
         event.midiChan = 0
-    event_print(event)
-
+    # event_print(event)
 def OnPitchBend(event):
     # Pitch Strip
     event.handled = False
     event.status -= event.midiChan
     event.midiChan = 0
-    event_print(event)
+    # event_print(event)
 
 def OnChannelPressure(event):
     # Channel Aftertouch
     event.handled = False
     event.status -= event.midiChan
     event.midiChan = 0
-    event_print(event)
+    # event_print(event)
 
 # csric | 2023
